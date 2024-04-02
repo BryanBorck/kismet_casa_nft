@@ -175,7 +175,8 @@ const app = new Frog({
     ),
     intents: [
       <Button.Reset>Reset</Button.Reset>,
-      <Button.Redirect location="https://kismetcasa.xyz/">Know more about it</Button.Redirect>,
+      <Button.Redirect location="https://kismetcasa.xyz/">Telegram</Button.Redirect>,
+      <Button.Redirect location="https://kismetcasa.xyz/">Website</Button.Redirect>,
     ],
   })
 })
