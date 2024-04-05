@@ -6,9 +6,26 @@ import { neynar } from 'frog/middlewares'
 import { handle } from 'frog/next'
 import { devtools } from 'frog/dev'
 import { serveStatic } from 'frog/serve-static'
-import { questions } from '@/data/questions'
 
+import { questions } from '@/data/questions'
 import { ApplicantDataType } from '@/data/answer'
+import { NeynarAPIClient } from "@neynar/nodejs-sdk";
+
+// const signerUuid = 'some-uuid';
+const neynarApiKey = 'NEYNAR_FROG_FM';
+const client = new NeynarAPIClient(neynarApiKey);
+
+// create signer
+// const signer = await client.createSigner(
+//   developerMnemonic,
+// );
+
+// async function publishCast(signerUuid: string, message: string) {
+//   const cast = await client.publishCast(signerUuid, message, {
+// embeds: [{ url: 'https://kismetnft.vercel.app/api' }],
+//   });
+//   console.log(cast);
+// }
 
 const mockApplicantData : ApplicantDataType = {
   id: "",
@@ -57,34 +74,44 @@ const app = new Frog({
 }).frame('/', (c) => {
   return c.res({
     action: '/page/0',
-    image: 'https://pbs.twimg.com/media/GF7ZvQRXEAAIH6C.jpg',
+    image: 'https://i.imgur.com/RTYtwuB.jpg',
     intents: [
-      <Button>Support</Button>,
+      <Button>Apply</Button>,
     ],
   })
 }).frame('/page/0', neynarMiddleware, (c) => {
   const { displayName } = c.var.interactor || {}
+  // const { frameData } = c
+  // const { fid } : any = frameData
+  // publishCast(fid, 'TEST BRY');
   return c.res({
     action: '/page/1',
     image: (
       <div
       style={{
         alignItems: 'center',
-        color: 'white',
+        color: 'black',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundImage: 'linear-gradient(to right, red, blue)',
-        fontSize: 36,
-        height: '100%',
+        backgroundImage: 'url(https://i.imgur.com/0sCVKCi.jpg)',
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         width: '100%',
-        padding: 20,
+        height: '100%',
+        fontSize: 36,
+        overflow: 'hidden', 
       }}
     >
-     <p>Hello {displayName || 'there'}, welcome to Kismet Casa!</p>
+     <p>Hola {displayName || 'there'}, welcome to Kismet Casa 🏡</p>
+
+     {/* Modify this to any name of house */}
+
      <p style={{
         marginTop: 20,
-      }}>Let's start the application to our hacker house!</p>
+      }}>Let's start the application to our Energy Hacker House!</p>
+
     </div>
     ),
     intents: [
@@ -105,16 +132,18 @@ const app = new Frog({
       <div
       style={{
         alignItems: 'center',
-        color: 'white',
+        color: 'black',
         display: 'flex',
-        justifyContent: 'center',
         flexDirection: 'column',
-        alignContent: 'center',
-        backgroundImage: 'linear-gradient(to right, red, blue)',
-        fontSize: 36,
-        height: '100%',
+        justifyContent: 'center',
+        backgroundImage: 'url(https://i.imgur.com/0sCVKCi.jpg)',
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         width: '100%',
-        padding: 20,
+        height: '100%',
+        fontSize: 36,
+        overflow: 'hidden', 
       }}
     >
       <p style={{
@@ -137,7 +166,9 @@ const app = new Frog({
         ? questions[parseInt(id) - 1].options.map((option) => <Button value={option}>{option}</Button>)
         : [
           <TextInput placeholder="Type your answer here" />,
-          <Button>Submit Answer</Button>,
+          <Button>
+            {(parseInt(id) === questions.length) ? 'Submit Application' : 'Send Answer'}
+          </Button>,
         ]
       )
     ]
@@ -156,17 +187,21 @@ const app = new Frog({
       <div
       style={{
         alignItems: 'center',
-        color: 'white',
+        color: 'black',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundImage: 'linear-gradient(to right, red, blue)',
-        fontSize: 36,
-        height: '100%',
+        backgroundImage: 'url(https://i.imgur.com/0sCVKCi.jpg)',
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         width: '100%',
-        padding: 20,
+        height: '100%',
+        fontSize: 36,
+        overflow: 'hidden', 
       }}
     >
+      <p>Application submitted 📨</p>
       <p style={{
         fontSize: 36,
         marginTop: 20,
@@ -174,8 +209,8 @@ const app = new Frog({
     </div>
     ),
     intents: [
-      <Button.Reset>Reset</Button.Reset>,
-      <Button.Redirect location="https://kismetcasa.xyz/">Telegram</Button.Redirect>,
+      <Button.Redirect location="https://warpcast.com/~/compose?embeds[]=https://kismetnft.vercel.app/api">Share</Button.Redirect>,
+      <Button.Redirect location="https://warpcast.com/~/channel/kismetcasa">Follow us</Button.Redirect>,
       <Button.Redirect location="https://kismetcasa.xyz/">Website</Button.Redirect>,
     ],
   })
