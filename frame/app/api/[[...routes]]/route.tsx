@@ -139,7 +139,6 @@ const app = new Frog({
     action: '/page/1',
     image: (
       <div
-<<<<<<< HEAD
       style={{
         alignItems: 'center',
         color: 'black',
@@ -165,26 +164,6 @@ const app = new Frog({
       }}>Let's start the application to our Energy Hacker House!</p>
 
     </div>
-=======
-        style={{
-          alignItems: 'center',
-          color: 'white',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          backgroundImage: 'linear-gradient(to right, red, blue)',
-          fontSize: 36,
-          height: '100%',
-          width: '100%',
-          padding: 20,
-        }}
-      >
-        <p>Hello {displayName || 'there'}, welcome to Kismet Casa!</p>
-        <p style={{
-          marginTop: 20,
-        }}>Let's start the application to our Hacker House!</p>
-      </div>
->>>>>>> b6556ccb58f61d60c3ac1c1935787d16df301056
     ),
     intents: [
       <Button>Let`s Go!</Button>,
@@ -202,7 +181,6 @@ const app = new Frog({
     ),
     image: (
       <div
-<<<<<<< HEAD
       style={{
         alignItems: 'center',
         color: 'black',
@@ -220,23 +198,6 @@ const app = new Frog({
       }}
     >
       <p style={{
-=======
-        style={{
-          alignItems: 'center',
-          color: 'white',
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          alignContent: 'center',
-          backgroundImage: 'linear-gradient(to right, red, blue)',
-          fontSize: 36,
-          height: '100%',
-          width: '100%',
-          padding: 20,
-        }}
-      >
-        <p style={{
->>>>>>> b6556ccb58f61d60c3ac1c1935787d16df301056
           fontSize: 36,
           fontWeight: 'bold',
           marginTop: 20,
@@ -293,7 +254,6 @@ const app = new Frog({
   return c.res({
     image: (
       <div
-<<<<<<< HEAD
       style={{
         alignItems: 'center',
         color: 'black',
@@ -316,29 +276,6 @@ const app = new Frog({
         marginTop: 20,
       }}>Thank you, now share with your {followerCount || 'many'} followers!</p>
     </div>
-=======
-        style={{
-          alignItems: 'center',
-          color: 'white',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          backgroundImage: 'linear-gradient(to right, red, blue)',
-          fontSize: 36,
-          height: '100%',
-          width: '100%',
-          padding: 20,
-        }}
-      >
-        <p style={{
-          fontSize: 36,
-          marginTop: 20,
-        }}>
-          {/* Thank you, now share with your {followerCount || 'many'} followers! */}
-          Application Submitted 📨
-        </p>
-      </div>
->>>>>>> b6556ccb58f61d60c3ac1c1935787d16df301056
     ),
     intents: [
       <Button.Redirect location="https://warpcast.com/~/compose?embeds[]=https://kismetnft.vercel.app/api">Share</Button.Redirect>,
